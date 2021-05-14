@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Axios from "axios";
+import { io } from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductCard from './ProductCard';
@@ -25,6 +26,7 @@ function App() {
     }).then(res => {
       setProducts(res.data);
     });
+    var socket = io();
   }, []);
 
   return (
