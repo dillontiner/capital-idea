@@ -28,7 +28,7 @@ function App() {
       setProducts(res.data);
     });
 
-    var socket = io("http://127.0.0.1:5000", {
+    var socket = io("http://127.0.0.1:4000", {
       transports: ['websocket', 'polling']
     });
 
