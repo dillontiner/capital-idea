@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     Axios({
       method: "GET",
-      url: "http://localhost:5000/",
+      url: "http://localhost:5000/products",
       headers: {
         "Content-Type": "application/json"
       }
