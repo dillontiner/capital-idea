@@ -31,6 +31,7 @@ function App() {
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
+          {/* TODO: add key back in to eliminate warning */}
           {products.map((product) => (
             <Grid item>
               <ProductCard product={product}/>
