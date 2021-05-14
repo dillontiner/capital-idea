@@ -26,7 +26,10 @@ function App() {
     }).then(res => {
       setProducts(res.data);
     });
-    var socket = io();
+    var socket = io('http://localhost:5000');
+    socket.on('info', (msg) => {
+      console.log('message: ' + msg);
+    });
   }, []);
 
   return (

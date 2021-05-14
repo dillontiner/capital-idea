@@ -20,7 +20,7 @@ app.get('/products', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  socket.emit('info', 'you did it');
 });
 
 server.listen(port, () => {
