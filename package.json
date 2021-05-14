@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dillontiner/capital-idea/issues"
   },
-  "homepage": "https://github.com/dillontiner/capital-idea#readme"
+  "homepage": "https://github.com/dillontiner/capital-idea#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
