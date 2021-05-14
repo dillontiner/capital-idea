@@ -8,7 +8,10 @@ app.use(cors());
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  products = [{name: "Lowe's Companies Inc", ticker: 'LOW', image_path: 'lowes_stock_tee.jpg'}]
+  products = [
+    {name: "Lowe's Companies Inc", ticker: 'LOW', image_path: 'lowes_stock_tee.jpg'},
+    {name: "Alphabet Inc Class C", ticker: 'GOOG', image_path: 'google_stock_tee.jpg'}
+  ]
   res.json(products)
 })
 
