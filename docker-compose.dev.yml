@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  product-api:
+    build:
+      context: ./product-api
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./product-api:/usr/src/app
+  live-pricing:
+    build:
+      context: ./live-pricing-service
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./live-pricing-service:/usr/src/app
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app

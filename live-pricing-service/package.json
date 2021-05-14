@@ -1,0 +1,23 @@
+{
+  "name": "live-pricing-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker-build": "docker build -f Dockerfile -t dillontiner/live-pricing-service-js .",
+    "docker-run": "docker run -p 4000:4000 dillontiner/live-pricing-service-js",
+    "docker-build-dev": "docker build -f Dockerfile.dev -t dillontiner/live-pricing-service-js-dev .",
+    "docker-run-dev": "docker run -p 4000:4000 -v `pwd`:/usr/src/app dillontiner/live-pricing-service-js-dev"
+  },
+  "author": "Dillon Tiner",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
