@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       {console.log(products)}
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={'lowes_stock_tee.jpg'} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
