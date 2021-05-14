@@ -2,8 +2,10 @@ const express = require('express')
 const app = express()
 const port = 5000
 
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
-  products = [{name: 'Designer Brands Inc', ticker: 'DBI', image_path: 'TODO'}]
+  products = [{name: "Lowe's Companies Inc", ticker: 'LOW', image_path: 'lowes_stock_tee.jpg'}]
   res.json(products)
 })
 
