@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "(cd product-api && nodemon server.js) & (cd client && yarn start) & nodemon live-pricing-server.js"
+    "dev": "(cd product-api && nodemon server.js) & (cd client && yarn start) & (cd live-pricing-service && nodemon server.js)"
   },
   "repository": {
     "type": "git",
