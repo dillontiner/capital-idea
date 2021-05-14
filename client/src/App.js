@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [pricing, setPricing] = useState({});
   const classes = useStyles();
 
   useEffect(() => {
@@ -31,8 +32,9 @@ function App() {
       transports: ['websocket', 'polling']
     });
 
-    socket.on('pricing', (msg) => {
-      console.log('message: ' + msg);
+    socket.on('pricing', (latestPricing) => {
+      setPricing(latestPricing);
+      console.log(latestPricing);
     });
   }, []);
 

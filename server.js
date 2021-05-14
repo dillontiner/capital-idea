@@ -26,10 +26,12 @@ app.get('/products', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  var count = 0;
+  var pricing = {LOW: 0, GOOG: 0};
   setInterval(() => {
-    socket.emit('pricing', count);
-    count++;
+    socket.emit('pricing', pricing);
+    Object.keys(pricing).forEach((key) => {
+      pricing[key]++;
+    });
   }, 1000);
 });
 
