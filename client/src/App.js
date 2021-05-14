@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Axios from "axios";
+import { io } from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductCard from './ProductCard';
@@ -13,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [pricing, setPricing] = useState({});
   const classes = useStyles();
 
   useEffect(() => {
@@ -25,6 +27,15 @@ function App() {
     }).then(res => {
       setProducts(res.data);
     });
+
+    var socket = io("http://127.0.0.1:5000", {
+      transports: ['websocket', 'polling']
+    });
+
+    socket.on('pricing', (latestPricing) => {
+      setPricing(latestPricing);
+      console.log(latestPricing);
+    });
   }, []);
 
   return (
@@ -34,7 +45,7 @@ function App() {
           {/* TODO: add key back in to eliminate warning */}
           {products.map((product) => (
             <Grid item>
-              <ProductCard product={product}/>
+              <ProductCard product={product} price={pricing[product.ticker]}/>
             </Grid>
           ))}
         </Grid>
