@@ -45,7 +45,7 @@ function App() {
           {/* TODO: add key back in to eliminate warning */}
           {products.map((product) => (
             <Grid item>
-              <ProductCard product={product}/>
+              <ProductCard product={product} price={pricing[product.ticker]}/>
             </Grid>
           ))}
         </Grid>

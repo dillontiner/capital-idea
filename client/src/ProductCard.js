@@ -20,7 +20,7 @@ function ProductCard(props) {
           {props.product.ticker}
         </Typography>
         <Typography variant="h5" component="h2">
-          $TO.DO
+          ${props.price}
         </Typography>
       </CardContent>
     </Card>
