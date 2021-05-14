@@ -1,17 +1,20 @@
+import { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Axios from "axios";
 
 function App() {
-  Axios({
-    method: "GET",
-    url: "http://localhost:5000/",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(res => {
-    console.log(res.data);
-  });
+  useEffect(() => {
+    Axios({
+      method: "GET",
+      url: "http://localhost:5000/",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(res => {
+      console.log(res.data);
+    });
+  }, [])
 
   return (
     <div className="App">
