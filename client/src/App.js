@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Axios from "axios";
 
 function App() {
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
     Axios({
       method: "GET",
@@ -12,12 +14,13 @@ function App() {
         "Content-Type": "application/json"
       }
     }).then(res => {
-      console.log(res.data);
+      setProducts(res.data);
     });
-  }, [])
+  }, []);
 
   return (
     <div className="App">
+      {console.log(products)}
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
