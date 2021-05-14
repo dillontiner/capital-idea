@@ -26,7 +26,11 @@ app.get('/products', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  socket.emit('info', 'you did it');
+  var count = 0;
+  setInterval(() => {
+    socket.emit('pricing', count);
+    count++;
+  }, 1000);
 });
 
 server.listen(port, () => {

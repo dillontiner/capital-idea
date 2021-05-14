@@ -26,10 +26,12 @@ function App() {
     }).then(res => {
       setProducts(res.data);
     });
+
     var socket = io("http://127.0.0.1:5000", {
       transports: ['websocket', 'polling']
     });
-    socket.on('info', (msg) => {
+
+    socket.on('pricing', (msg) => {
       console.log('message: ' + msg);
     });
   }, []);
