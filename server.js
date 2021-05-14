@@ -3,7 +3,8 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  products = [{name: 'Designer Brands Inc', ticker: 'DBI', image_path: 'TODO'}]
+  res.json(products)
 })
 
 app.listen(port, () => {
