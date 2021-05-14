@@ -34,7 +34,6 @@ function App() {
 
     socket.on('pricing', (latestPricing) => {
       setPricing(latestPricing);
-      console.log(latestPricing);
     });
   }, []);
 
