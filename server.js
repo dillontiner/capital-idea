@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 5000
 
 app.get('/', (req, res) => {
   products = [{name: 'Designer Brands Inc', ticker: 'DBI', image_path: 'TODO'}]
