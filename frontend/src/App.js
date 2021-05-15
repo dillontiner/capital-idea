@@ -5,6 +5,8 @@ import { io } from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductCard from './ProductCard';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import { loadStripe } from '@stripe/stripe-js';
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -22,7 +24,7 @@ function App() {
   const [pricing, setPricing] = useState({});
   const classes = useStyles();
 
-  const handleClick = async (event) => {
+  const handleCheckout = async (event) => {
     // Get Stripe.js instance
     const stripe = await stripePromise;
 
@@ -71,10 +73,13 @@ function App() {
           {/* TODO: add key back in to eliminate warning */}
           {products.map((product) => (
             <Grid item>
-              <ProductCard product={product} price={pricing[product.ticker]}/>
-              <button role="link" onClick={handleClick}>
-                BUY BUY BUY
-              </button>
+              <ProductCard product={product} price={pricing[product.ticker]} handleCheckout={handleCheckout}>
+                <Button variant="contained" color="primary" onClick={handleCheckout}>
+                  <Typography variant="caption">
+                    BUY BUY BUY
+                  </Typography>
+                </Button>
+              </ProductCard>
             </Grid>
           ))}
         </Grid>
