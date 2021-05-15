@@ -4,10 +4,12 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm install -g serve
 
 COPY . .
 
+RUN npm run build
+
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD [ "/usr/local/bin/serve", "-s", "build", "-l", "3000" ]
