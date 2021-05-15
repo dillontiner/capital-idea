@@ -2,8 +2,10 @@ const express = require('express')
 const app = express()
 const port = 5000
 const cors = require("cors");
+const bodyParser = require('body-parser');
 
 app.use(cors());
+app.use(bodyParser.json());
 
 app.use(express.static('public'))
 
@@ -25,7 +27,7 @@ app.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'T-shirt',
+            name: req.body['item'],
           },
           unit_amount: 2000,
         },

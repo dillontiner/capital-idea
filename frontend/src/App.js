@@ -22,14 +22,23 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [products, setProducts] = useState([]);
   const [pricing, setPricing] = useState({});
+  // const [itemToPurchase, setItemToPurchase] = useState({ item: '' });
   const classes = useStyles();
 
-  const handleCheckout = async (event) => {
+  const handleCheckout = async (itemToPurchase) => {
     // Get Stripe.js instance
     const stripe = await stripePromise;
 
     // Call your backend to create the Checkout Session
-    const response = await fetch('http://127.0.0.1:5000/create-checkout-session', { method: 'POST' });
+    const response = await fetch('http://127.0.0.1:5000/create-checkout-session',
+      {
+        method: 'POST' ,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(itemToPurchase)
+      }
+    );
 
     const session = await response.json();
 
@@ -74,7 +83,11 @@ function App() {
           {products.map((product) => (
             <Grid item>
               <ProductCard product={product} price={pricing[product.ticker]} handleCheckout={handleCheckout}>
-                <Button variant="contained" color="primary" onClick={handleCheckout}>
+                <Button variant="contained" color="primary" onClick={ () => {
+                    // setItemToPurchase({item: product.ticker});
+                    handleCheckout({item: product.ticker});
+                  }
+                }>
                   <Typography variant="caption">
                     BUY BUY BUY
                   </Typography>
