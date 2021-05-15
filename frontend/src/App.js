@@ -85,7 +85,7 @@ function App() {
               <ProductCard product={product} price={pricing[product.ticker]} handleCheckout={handleCheckout}>
                 <Button variant="contained" color="primary" onClick={ () => {
                     // setItemToPurchase({item: product.ticker});
-                    handleCheckout({item: product.ticker});
+                    handleCheckout({item: product.ticker, price: pricing[product.ticker]});
                   }
                 }>
                   <Typography variant="caption">
