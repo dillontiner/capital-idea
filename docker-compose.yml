@@ -6,19 +6,13 @@ services:
       context: ./product-api
     ports:
       - "5000:5000"
-    volumes:
-      - ./product-api:/usr/src/app
   live-pricing:
     build:
       context: ./live-pricing-service
     ports:
       - "4000:4000"
-    volumes:
-      - ./live-pricing-service:/usr/src/app
   frontend:
     build:
       context: ./frontend
     ports:
       - "80:3000"
-    volumes:
-      - ./frontend:/usr/src/app
