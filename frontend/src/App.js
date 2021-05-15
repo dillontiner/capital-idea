@@ -28,6 +28,12 @@ function App() {
       setProducts(res.data);
     });
 
+    var pythonSocket = io("http://127.0.0.1:5001");
+
+    pythonSocket.on('after connect', function(msg){
+       console.log('After connect', msg);
+    });
+
     var socket = io("http://127.0.0.1:4000", {
       transports: ['websocket', 'polling']
     });
