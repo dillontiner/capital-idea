@@ -5,6 +5,13 @@ import { io } from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ProductCard from './ProductCard';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+import { loadStripe } from '@stripe/stripe-js';
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe('pk_test_51IbGTDIL6q5pLIOCkBedOVBGZqlF6dtW2L8BhCTGyZBHO0o1w4CwYsIMBKAMZNMuW6JWIx8BYKfjRgsHzgwAopEY00Cachbthu');
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,7 +22,38 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [products, setProducts] = useState([]);
   const [pricing, setPricing] = useState({});
+  // const [itemToPurchase, setItemToPurchase] = useState({ item: '' });
   const classes = useStyles();
+
+  const handleCheckout = async (itemToPurchase) => {
+    // Get Stripe.js instance
+    const stripe = await stripePromise;
+
+    // Call your backend to create the Checkout Session
+    const response = await fetch('http://127.0.0.1:5000/create-checkout-session',
+      {
+        method: 'POST' ,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(itemToPurchase)
+      }
+    );
+
+    const session = await response.json();
+
+    // When the customer clicks on the button, redirect them to Checkout.
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      // If `redirectToCheckout` fails due to a browser or network
+      // error, display the localized error message to your customer
+      // using `result.error.message`.
+      console.log(result.error.message);
+    }
+  };
 
   useEffect(() => {
     Axios({
@@ -44,7 +82,17 @@ function App() {
           {/* TODO: add key back in to eliminate warning */}
           {products.map((product) => (
             <Grid item>
-              <ProductCard product={product} price={pricing[product.ticker]}/>
+              <ProductCard product={product} price={pricing[product.ticker]} handleCheckout={handleCheckout}>
+                <Button variant="contained" color="primary" onClick={ () => {
+                    // setItemToPurchase({item: product.ticker});
+                    handleCheckout({item: product.ticker, price: pricing[product.ticker]});
+                  }
+                }>
+                  <Typography variant="caption">
+                    BUY BUY BUY
+                  </Typography>
+                </Button>
+              </ProductCard>
             </Grid>
           ))}
         </Grid>

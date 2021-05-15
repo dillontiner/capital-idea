@@ -22,6 +22,7 @@ function ProductCard(props) {
         <Typography variant="h5" component="h2">
           ${props.price}
         </Typography>
+        {props.children}
       </CardContent>
     </Card>
   );
