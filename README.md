@@ -12,7 +12,14 @@ mkdir -p frontend/.cert
 mkcert -key-file ./frontend/.cert/key.pem -cert-file ./frontend/.cert/cert.pem "localhost"
 ```
 
-Run the dev app locally with this command. This assumes you have [docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/)). I had `Docker version 19.03.12, build 48a66213fe` and `docker-compose version 1.26.2, build eefe0d31` installed on OSX respectively.
+Install the dependencies for each service, which are required to run the development app.
+```
+cd frontend && npm install && cd ..
+cd ecommerce-backend && npm install && cd ..
+cd live-pricing-service && npm install && cd ..
+```
+
+Run the dev app locally with this command and view it at `https://localhost`. This assumes you have [docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/)). I had `Docker version 19.03.12, build 48a66213fe` and `docker-compose version 1.26.2, build eefe0d31` installed on OSX respectively.
 ```
 docker-compose -f docker-compose.dev.yml up
 ```
