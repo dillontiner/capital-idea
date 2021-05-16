@@ -12,7 +12,7 @@ mkdir -p frontend/.cert
 mkcert -key-file ./frontend/.cert/key.pem -cert-file ./frontend/.cert/cert.pem "localhost"
 ```
 
-Run the dev app locally with this command
+Run the dev app locally with this command (assumes you have [docker](https://docs.docker.com/get-docker/) and [docker compose](https://docs.docker.com/compose/install/))
 ```
 docker-compose -f docker-compose.dev.yml up
 ```
