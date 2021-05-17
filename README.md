@@ -1,5 +1,9 @@
 # capital-idea
 
+Proof of concept for live streaming prices for a hypothetical t shirts with stock certificates on them.
+
+![capital-idea](https://user-images.githubusercontent.com/10820969/118417280-5b13e900-b681-11eb-999d-b47d9ef88287.gif)
+
 ### Running development locally
 Set up your local SSL certificate so HTTPS works locally ([source](https://www.freecodecamp.org/news/how-to-set-up-https-locally-with-create-react-app/)). If this for some reason fails, going back to an earlier commit `git checkout 759aec572a0c55922344f41a4303ae03560c3eaa`
 ```
