@@ -1,6 +1,6 @@
 # capital-idea
 
-Proof of concept for live streaming prices for a hypothetical t shirts with stock certificates on them.
+Proof of concept for live streaming prices for hypothetical t shirts with stock certificates on them.
 
 ![capital-idea](https://user-images.githubusercontent.com/10820969/118417280-5b13e900-b681-11eb-999d-b47d9ef88287.gif)
 
